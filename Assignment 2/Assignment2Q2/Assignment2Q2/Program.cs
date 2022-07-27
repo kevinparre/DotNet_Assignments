@@ -11,12 +11,12 @@ namespace Assignment2Q2
         int rollno;
         string name;
         int std;
-        string sem;
+        int sem;
         string branch;
         int[] marks;
         bool flag = true;
 
-        public Student(int rollno, string name, int std, string sem, string branch)
+        public Student(int rollno, string name, int std,int sem, string branch)
         {
             this.rollno = rollno;
             this.name = name;
@@ -31,7 +31,7 @@ namespace Assignment2Q2
 
         public void insertMarks()
         {
-            
+
             marks = new int[5];
             for (int i = 0; i < 5; i++)
             {
@@ -43,33 +43,33 @@ namespace Assignment2Q2
         public void displayResult()
         {
             Console.WriteLine("Marks for the all subjects:");
-            
+
             int sum = 0;
             foreach (int i in marks)
             {
-                
+
                 if (i > 35)
                 {
-                    total += j;
+                    sum += i;
                 }
                 else
                 {
                     flag = false;
-                    total += j;
+                    sum += i;
                 }
             }
             Console.WriteLine("Total Marks: {0}", sum);
             if (flag == false)
             {
-                Console.WriteLine("Fail: 35 or less marks scored in one or more subjects." );
+                Console.WriteLine("Fail: 35 or less marks scored in one or more subjects.");
             }
-            else if (total / subjectCount < 50)
+            else if (sum / 5 < 50)
             {
-                Console.WriteLine("Fail:Low Average: {0}", total / subjectCount);
+                Console.WriteLine("Fail:Low Average: {0}", sum / 5);
             }
             else
             {
-                Console.WriteLine("Passed!!!: Average: {0}%", total / subjectCount);
+                Console.WriteLine("Passed!!!: Average: {0}%", sum / 5);
             }
         }
 
@@ -82,11 +82,12 @@ namespace Assignment2Q2
             Console.WriteLine("Sem: {0}", sem);
             Console.WriteLine("Batch: {0}", std);
 
-            displayResult()
+            displayResult();
 
 
 
         }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -94,7 +95,7 @@ namespace Assignment2Q2
                 int rollNo;
                 string name;
                 int sem;
-                string batch;
+                string std;
                 string branch;
                 int subjectCount;
                 Console.WriteLine("Enetr student name: ");
@@ -106,7 +107,7 @@ namespace Assignment2Q2
                 Console.WriteLine("Enter Sem No: ");
                 sem = int.Parse(Console.ReadLine());
                 Console.WriteLine("Enetr Batch/ Division: ");
-                batch = Console.ReadLine();
+                std = Console.ReadLine();
                 Console.WriteLine("Enter total subject count: ");
                 subjectCount = int.Parse(Console.ReadLine());
 

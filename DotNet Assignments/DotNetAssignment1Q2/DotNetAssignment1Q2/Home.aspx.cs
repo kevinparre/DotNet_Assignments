@@ -16,15 +16,22 @@ namespace DotNetAssignment1Q2
                 TextBox username = (TextBox)PreviousPage.FindControl("TextBox1");
                 TextBox password = (TextBox)PreviousPage.FindControl("TextBox2");
 
+                HttpCookie cookie = new HttpCookie("logincookie");
+                cookie["i1"] = username.Text;
+                cookie["i2"] = password.Text;
+                Response.Cookies.Add(cookie);
+                
 
-                HttpCookie rc = Request.Cookies["logincookie"];
+
+                //HttpCookie rc = Request.Cookies["logincookie"];
                 //Label1.Text = rc["i1"];
-                Label1.Text = "Welcome!!!!" + username.Text + "and Your Password is :" + password.Text;
+
+                Label1.Text = "Welcome!!!!" + username.Text + " and Your Password is :" + password.Text;
             }
 
-            else if (Request.Cookies["loginCookie"] != null)
+            else if (Request.Cookies["logincookie"] != null)
             {
-                HttpCookie rc = Request.Cookies["loginCookie"];
+                HttpCookie rc = Request.Cookies["logincookie"];
                 Label1.Text = "Welcome " + rc["i1"] + "  " + "and  Your password is: " + rc["i2"];
             }
             else
@@ -34,7 +41,10 @@ namespace DotNetAssignment1Q2
         }
 protected void Button1_Click(object sender, EventArgs e)
         {
-
+            HttpCookie rc = Request.Cookies["logincookie"];
+            rc.Expires = DateTime.Now.AddDays(-1);
+            Response.Redirect("Login.aspx");
+            
         }
     }
 }

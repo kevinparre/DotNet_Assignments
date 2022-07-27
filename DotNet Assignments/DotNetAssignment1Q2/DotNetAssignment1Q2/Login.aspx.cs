@@ -20,12 +20,9 @@ namespace DotNetAssignment1Q2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            HttpCookie cookie = new HttpCookie("logincookie");
-            cookie["i1"] = TextBox1.Text;
-            cookie["i2"] = TextBox2.Text;
-            Response.Cookies.Add(cookie);
+           
 
-            Response.Redirect("Home.aspx");
+            //Response.Redirect("Home.aspx");
 
 
         }
