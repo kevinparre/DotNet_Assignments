@@ -41,8 +41,10 @@ namespace DotNetAssignment1Q2
         }
 protected void Button1_Click(object sender, EventArgs e)
         {
-            HttpCookie rc = Request.Cookies["logincookie"];
-            rc.Expires = DateTime.Now.AddDays(-1);
+            HttpCookie cookie = new HttpCookie("logincookie");
+            cookie.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(cookie);
+
             Response.Redirect("Login.aspx");
             
         }
